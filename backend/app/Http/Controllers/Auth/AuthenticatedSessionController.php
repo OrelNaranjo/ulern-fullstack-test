@@ -6,10 +6,43 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @OA\Info(title="API Documentation Ulern", version="1.0")
+ * @OA\Tag(
+ *     name="Authentication",
+ *     description="Endpoints related to user authentication"
+ * )
+ */
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Handle an incoming authentication request.
+     * @OA\Post(
+     *     path="/api/login",
+     *     summary="Login user",
+     *     tags={"Authentication"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="email", type="string", example="john.doe@example.com"),
+     *             @OA\Property(property="password", type="string", example="password")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Logged in successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Logged in successfully"),
+     *             @OA\Property(property="token", type="string", example="your_auth_token")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="The provided credentials are incorrect.")
+     *         )
+     *     )
+     * )
      */
     public function store(Request $request)
     {
@@ -44,7 +77,18 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Destroy an authenticated session.
+     * @OA\Post(
+     *     path="/api/logout",
+     *     summary="Logout user",
+     *     tags={"Authentication"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Logged out successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Logged out successfully")
+     *         )
+     *     )
+     * )
      */
     public function destroy(Request $request)
     {
