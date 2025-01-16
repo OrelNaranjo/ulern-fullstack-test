@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import LoginView from './components/LoginForm.vue'
+import SessionView from './views/SessionView.vue'
 </script>
 
 <template>
   <div id="app">
-    <LoginView />
+    <SessionView />
   </div>
 </template>
