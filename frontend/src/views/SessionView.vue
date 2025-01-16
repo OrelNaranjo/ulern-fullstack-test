@@ -1,9 +1,10 @@
+
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import Background from '../components/Background.vue'
 import LoginForm from '../components/LoginForm.vue'
 import RegisterForm from '../components/RegisterForm.vue'
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 import type { Component } from 'vue'
 
 const route = useRoute()
