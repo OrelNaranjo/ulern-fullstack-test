@@ -5,15 +5,18 @@ import type { UserProfile } from '../interfaces/UserProfile'
 export const useUserStore = defineStore('user', {
   state: () => ({
     profile: null as UserProfile | null,
+    token: null as string | null,
     isProfileFetched: false,
   }),
   actions: {
-    async fetchUserProfile() {
-      if (this.isProfileFetched) return
+    async fetchUserProfile(force = false) {
+      if (this.isProfileFetched && !force) return
 
       try {
         const response = await axios.get<UserProfile>('/profile')
         this.profile = response.data
+        this.token =
+          localStorage.getItem('token') ?? sessionStorage.getItem('token')
         this.isProfileFetched = true
       } catch (error) {
         console.error('Error al obtener el perfil de usuario:', error)
@@ -29,15 +32,7 @@ export const useUserStore = defineStore('user', {
           throw new Error('No se encontró el token de autenticación.')
         }
 
-        await axios.post(
-          '/logout',
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        )
+        await axios.post('/logout')
       } catch (error) {
         console.error('Error al cerrar sesión en el servidor:', error)
         alert('Error al cerrar sesión en el servidor.')
