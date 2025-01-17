@@ -23,7 +23,21 @@ export const useUserStore = defineStore('user', {
 
     async logout() {
       try {
-        await axios.post('/logout')
+        const token =
+          localStorage.getItem('token') ?? sessionStorage.getItem('token')
+        if (!token) {
+          throw new Error('No se encontró el token de autenticación.')
+        }
+
+        await axios.post(
+          '/logout',
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
       } catch (error) {
         console.error('Error al cerrar sesión en el servidor:', error)
         alert('Error al cerrar sesión en el servidor.')
@@ -32,6 +46,7 @@ export const useUserStore = defineStore('user', {
         this.isProfileFetched = false
         localStorage.removeItem('token')
         sessionStorage.removeItem('token')
+        window.location.href = '/auth/login'
       }
     },
   },

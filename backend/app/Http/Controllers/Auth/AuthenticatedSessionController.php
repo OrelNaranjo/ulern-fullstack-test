@@ -92,8 +92,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        // Revoke the current token
-        $request->user()->currentAccessToken()->delete();
+        // Log the user and token information for debugging
+        \Log::info('User:', ['user' => $request->user()]);
+        \Log::info('Current Access Token:', ['token' => $request->user() ? $request->user()->currentAccessToken() : null]);
+
+        // Check if the user is authenticated and has a current access token
+        if ($request->user() && $request->user()->currentAccessToken() && !($request->user()->currentAccessToken() instanceof \Laravel\Sanctum\TransientToken)) {
+            // Revoke the current token
+            $request->user()->currentAccessToken()->delete();
+        }
 
         // Log out the user
         Auth::guard('web')->logout();
@@ -101,10 +108,12 @@ class AuthenticatedSessionController extends Controller
         // Invalidate the session
         $request->session()->invalidate();
 
-        // Regenerate the CSRF token
+        // Regenerate the session token
         $request->session()->regenerateToken();
 
         // Return a success response
-        return response()->json(['message' => 'Logged out successfully'], 200);
+        return response()->json([
+            'message' => 'Logged out successfully'
+        ], 200);
     }
 }

@@ -1,26 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { useUserStore } from '../../stores/userStore'
-import axios from '../../axios'
 
 const showMenu = ref(false)
-const router = useRouter()
 const userStore = useUserStore()
 
 const toggleMenu = () => {
   showMenu.value = !showMenu.value
-}
-
-const logout = async () => {
-  try {
-    await axios.post('/logout')
-    userStore.logout()
-    router.push('/auth/login')
-  } catch (error) {
-    console.error('Error al cerrar sesión:', error)
-    alert('No se pudo cerrar la sesión correctamente.')
-  }
 }
 
 const userInitial = computed(() => {
@@ -56,7 +42,7 @@ onMounted(() => {
         </li>
         <li>
           <button
-            @click="logout"
+            @click="userStore.logout"
             class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200"
           >
             Cerrar Sesión

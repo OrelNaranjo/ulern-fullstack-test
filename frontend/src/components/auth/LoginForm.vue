@@ -65,6 +65,7 @@ const handleSubmit = async () => {
           placeholder="Correo Electrónico"
           class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md bg-transparent placeholder-white focus:outline-none focus:ring focus:border-indigo-300"
           required
+          autocomplete="username"
         />
       </div>
       <div class="mb-6 relative">
@@ -80,6 +81,7 @@ const handleSubmit = async () => {
           placeholder="Contraseña"
           class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md bg-transparent text-white placeholder-white focus:outline-none focus:ring focus:border-indigo-300"
           required
+          autocomplete="current-password"
         />
       </div>
       <div class="mb-4 flex items-center">
