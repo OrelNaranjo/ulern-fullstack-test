@@ -46,6 +46,7 @@ Este proyecto implementa un sistema de login y registro utilizando Laravel 11 pa
 
 - **Documentación de API con L5-Swagger:** Implementación de L5-Swagger para la documentación de la API y los endpoints de autenticación.
 - **Autenticación con Laravel Sanctum:** Implementación de autenticación utilizando Laravel Sanctum.
+- **Edición de datos del perfil de usuario:** Implementación de la funcionalidad para editar los datos del perfil de usuario.
 
 ### Frontend
 
@@ -71,7 +72,7 @@ Asegúrate de tener instalados los siguientes programas en tu máquina:
 1. **Clonar el repositorio:**
 
    ```sh
-   git clone https://OrelNaranjo@github.com/OrelNaranjo/ulern-fullstack-test.git
+   git clone https://github.com/OrelNaranjo/ulern-fullstack-test.git
    cd ulern-fullstack-test
    ```
 
@@ -93,6 +94,12 @@ Asegúrate de tener instalados los siguientes programas en tu máquina:
 
    ```sh
    yarn setup
+   ```
+
+4. **Ejecutar la aplicación:**
+
+   ```sh
+   yarn dev
    ```
 
 ### Acceso a la aplicación
