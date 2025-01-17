@@ -66,6 +66,11 @@ Asegúrate de tener instalados los siguientes programas en tu máquina:
 - [Yarn](https://yarnpkg.com/)
 - [Composer](https://getcomposer.org/)
 - [PHP](https://www.php.net/) (versión 7.3 o superior)
+- [7ZIP](https://www.7-zip.org/)
+
+PHP.ini tiene que habilitar las siguientes extensiones:
+ - extension=fileinfo;
+ - extension=zip;
 
 ### Pasos para instalar y ejecutar el proyecto
 
@@ -87,7 +92,7 @@ Asegúrate de tener instalados los siguientes programas en tu máquina:
    - En Windows (PowerShell):
 
      ```sh
-     rename backend/.env.example backend/.env
+     ren backend\.env.example .env
      ```
 
 3. **Ejecutar el script de configuración:**

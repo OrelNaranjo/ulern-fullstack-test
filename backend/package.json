@@ -8,7 +8,8 @@
         "build": "vite build",
         "migrate": "php artisan migrate",
         "format": "cross-env PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix app",
-        "swagger:generate": "php artisan l5-swagger:generate"
+        "swagger:generate": "php artisan l5-swagger:generate",
+        "compose": "php artisan compose install"
     },
     "devDependencies": {
         "axios": "^1.6.4",
