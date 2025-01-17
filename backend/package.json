@@ -1,12 +1,17 @@
 {
+    "name": "backend",
+    "version": "1.0.0",
     "private": true,
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "migrate": "php artisan migrate",
+        "format": "cross-env PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix app"
     },
     "devDependencies": {
         "axios": "^1.6.4",
+        "cross-env": "^7.0.3",
         "laravel-vite-plugin": "^1.0",
         "vite": "^5.0"
     }
