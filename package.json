@@ -19,7 +19,7 @@
     "dev:backend": "cd backend && php artisan serve",
     "dev:frontend": "cd frontend && yarn dev",
     "dev": "concurrently \"yarn dev:backend\" \"yarn dev:frontend\"",
-    "setup": "yarn install && yarn compose:backend && yarn migrate:backend && yarn format && yarn swagger:generate:backend",
+    "setup": "yarn install && yarn composer:backend && yarn migrate:backend && yarn swagger:generate:backend",
     "format:frontend": "cd frontend && yarn format",
     "format:backend": "cd backend && yarn format",
     "format": "concurrently \"yarn format:backend\" \"yarn format:frontend\"",

@@ -64,13 +64,14 @@ Asegúrate de tener instalados los siguientes programas en tu máquina:
 
 - [Node.js](https://nodejs.org/) (versión 14 o superior)
 - [Yarn](https://yarnpkg.com/)
+- [XAMPP](https://www.apachefriends.org/) (versión PHP 8.2 o superior)
 - [Composer](https://getcomposer.org/)
-- [PHP](https://www.php.net/) (versión 7.3 o superior)
 - [7ZIP](https://www.7-zip.org/)
 
 PHP.ini tiene que habilitar las siguientes extensiones:
- - extension=fileinfo;
- - extension=zip;
+
+- extension=fileinfo;
+- extension=zip;
 
 ### Pasos para instalar y ejecutar el proyecto
 
@@ -86,7 +87,7 @@ PHP.ini tiene que habilitar las siguientes extensiones:
    - En macOS y Linux:
 
      ```sh
-     mv backend/.env.example backend/.env
+     mv backend/.env.example .env
      ```
 
    - En Windows (PowerShell):
@@ -100,6 +101,8 @@ PHP.ini tiene que habilitar las siguientes extensiones:
    ```sh
    yarn setup
    ```
+
+   > **Nota:** Si encuentras errores al ejecutar el comando `yarn setup`, puede ser debido a tu antivirus. Intenta deshabilitar el antivirus temporalmente y vuelve a ejecutar el comando.
 
 4. **Ejecutar la aplicación:**
 
