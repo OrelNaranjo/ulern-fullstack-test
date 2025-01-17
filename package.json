@@ -18,10 +18,11 @@
     "dev:backend": "cd backend && php artisan serve",
     "dev:frontend": "cd frontend && yarn dev",
     "dev": "concurrently \"yarn dev:backend\" \"yarn dev:frontend\"",
-    "setup": "yarn && yarn migrate:backend && yarn dev",
+    "setup": "yarn install && yarn migrate:backend && yarn format && yarn swagger:generate:backend",
     "format:frontend": "cd frontend && yarn format",
     "format:backend": "cd backend && yarn format",
-    "format": "concurrently \"yarn format:backend\" \"yarn format:frontend\""
+    "format": "concurrently \"yarn format:backend\" \"yarn format:frontend\"",
+    "swagger:generate:backend": "cd backend && yarn swagger:generate"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

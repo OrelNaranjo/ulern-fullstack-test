@@ -4,6 +4,7 @@ import LayoutView from '../views/LayoutView.vue'
 import Profile from '../components/UserProfile.vue'
 import Dashboard from '../components/HomePage.vue'
 import { authGuard } from '../guards/authGuard'
+import EditProfile from '../components/EditProfile.vue'
 
 const routes = [
   {
@@ -34,13 +35,20 @@ const routes = [
         path: 'profile',
         component: Profile,
         meta: { requiresAuth: true, title: 'Perfil' },
+        children: [
+          {
+            path: 'edit',
+            component: EditProfile,
+            meta: { requiresAuth: true, title: 'Editar Perfil' },
+          },
+        ],
       },
     ],
   },
-  {
-    path: '/:pathMatch(.*)*',
-    redirect: '/',
-  },
+  // {
+  //   path: '/:pathMatch(.*)*',
+  //   redirect: '/',
+  // },
 ]
 
 const router = createRouter({

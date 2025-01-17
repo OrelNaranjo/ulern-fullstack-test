@@ -9,8 +9,8 @@ import type { Component } from 'vue'
 const route = useRoute()
 
 const componentMap: { [key: string]: Component } = {
-  '/login': LoginForm,
-  '/register': RegisterForm,
+  '/auth/login': LoginForm,
+  '/auth/register': RegisterForm,
 }
 
 const currentComponent = computed<Component>(

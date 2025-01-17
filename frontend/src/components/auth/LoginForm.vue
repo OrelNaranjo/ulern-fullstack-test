@@ -27,7 +27,7 @@ const handleSubmit = async () => {
     } else {
       sessionStorage.setItem('token', response.data.token)
     }
-    router.push('/dashboard')
+    router.push('/')
   } catch (error) {
     if (error instanceof AxiosError) {
       errorMessage.value =
@@ -91,11 +91,11 @@ const handleSubmit = async () => {
           v-model="rememberMe"
           class="mr-2"
         />
-        <label for="rememberMe" class="text-gray-700">Recuérdame</label>
+        <label for="rememberMe">Recuérdame</label>
       </div>
       <button
         type="submit"
-        class="w-full bg-yellow-500 text-indigo-500 py-2 rounded-lg hover:bg-indigo-500 hover:text-white transition duration-300"
+        class="w-full bg-yellow-500 py-2 rounded-lg hover:bg-indigo-500 transition duration-300"
       >
         Iniciar Sesión
       </button>
@@ -105,7 +105,9 @@ const handleSubmit = async () => {
     </form>
     <p class="mt-4 text-center">
       ¿No tienes una cuenta?
-      <a href="/register" class="text-yellow-500 hover:underline">Regístrate</a>
+      <a href="/auth/register" class="text-yellow-500 hover:underline"
+        >Regístrate</a
+      >
     </p>
   </div>
 </template>

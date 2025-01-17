@@ -46,7 +46,7 @@ const handleSubmit = async () => {
       password: password.value,
       password_confirmation: passwordConfirmation.value,
     })
-    router.push('/login')
+    router.push('/auth/login')
   } catch (error) {
     if (error instanceof AxiosError) {
       errorMessage.value =
@@ -173,7 +173,9 @@ const handleSubmit = async () => {
     </form>
     <p class="mt-4 text-center">
       ¿Ya tienes una cuenta?
-      <a href="/login" class="text-yellow-500 hover:underline">Inicia Sesión</a>
+      <a href="/auth/login" class="text-yellow-500 hover:underline"
+        >Inicia Sesión</a
+      >
     </p>
   </div>
 </template>
