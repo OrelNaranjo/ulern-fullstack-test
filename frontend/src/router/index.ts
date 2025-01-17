@@ -5,6 +5,7 @@ import Profile from '../components/UserProfile.vue'
 import Dashboard from '../components/HomePage.vue'
 import { authGuard } from '../guards/authGuard'
 import EditProfile from '../components/EditProfile.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
   {
@@ -45,10 +46,11 @@ const routes = [
       },
     ],
   },
-  // {
-  //   path: '/:pathMatch(.*)*',
-  //   redirect: '/',
-  // },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: NotFoundView,
+  },
 ]
 
 const router = createRouter({

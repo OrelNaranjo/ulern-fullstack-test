@@ -9,6 +9,10 @@ const toggleMenu = () => {
   showMenu.value = !showMenu.value
 }
 
+const closeMenu = () => {
+  showMenu.value = false
+}
+
 const userInitial = computed(() => {
   return userStore.profile?.first_name?.charAt(0).toUpperCase() || ''
 })
@@ -36,14 +40,20 @@ onMounted(() => {
         <li>
           <router-link
             to="/profile"
-            class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            class="block px-4 py-2 text-gray-800 hover:bg-gray-200 rounded-md"
+            @click="closeMenu"
             >Perfil</router-link
           >
         </li>
         <li>
           <button
-            @click="userStore.logout"
-            class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200"
+            @click="
+              () => {
+                userStore.logout()
+                closeMenu()
+              }
+            "
+            class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200 rounded-md"
           >
             Cerrar Sesión
           </button>
