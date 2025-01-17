@@ -1,9 +1,5 @@
-<script setup lang="ts">
-import SessionView from './views/SessionView.vue'
-</script>
-
 <template>
   <div id="app">
-    <SessionView />
+    <router-view />
   </div>
 </template>

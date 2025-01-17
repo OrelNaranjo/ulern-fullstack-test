@@ -1,9 +1,8 @@
-
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import Background from '../components/Background.vue'
-import LoginForm from '../components/LoginForm.vue'
-import RegisterForm from '../components/RegisterForm.vue'
+import Background from '../components/templates/BackgroundComponent.vue'
+import LoginForm from '../components/auth/LoginForm.vue'
+import RegisterForm from '../components/auth/RegisterForm.vue'
 import { computed } from 'vue'
 import type { Component } from 'vue'
 
@@ -14,12 +13,16 @@ const componentMap: { [key: string]: Component } = {
   '/register': RegisterForm,
 }
 
-const currentComponent = computed<Component>(() => componentMap[route.path] || LoginForm)
+const currentComponent = computed<Component>(
+  () => componentMap[route.path] || LoginForm,
+)
 </script>
 
 <template>
   <main>
-    <div class="min-h-screen flex flex-col items-center justify-center p-4 text-white">
+    <div
+      class="min-h-screen flex flex-col items-center justify-center p-4 text-white"
+    >
       <Background />
       <component :is="currentComponent" />
     </div>

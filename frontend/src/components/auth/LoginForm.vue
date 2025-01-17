@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
+import axios from '../../axios'
 import { useRouter } from 'vue-router'
 
 const email = ref('')
@@ -47,7 +48,9 @@ const handleSubmit = async () => {
       <font-awesome-icon :icon="['fas', 'user']" size="3x" />
     </div>
 
-    <h2 class="text-2xl font-bold uppercase mb-6 text-center">Iniciar Sesión</h2>
+    <h2 class="text-2xl font-bold uppercase mb-6 text-center">
+      Iniciar Sesión
+    </h2>
     <form @submit.prevent="handleSubmit">
       <div class="mb-4 relative">
         <label for="email" class="sr-only">Correo Electrónico</label>
@@ -80,7 +83,12 @@ const handleSubmit = async () => {
         />
       </div>
       <div class="mb-4 flex items-center">
-        <input type="checkbox" id="rememberMe" v-model="rememberMe" class="mr-2" />
+        <input
+          type="checkbox"
+          id="rememberMe"
+          v-model="rememberMe"
+          class="mr-2"
+        />
         <label for="rememberMe" class="text-gray-700">Recuérdame</label>
       </div>
       <button
@@ -89,7 +97,9 @@ const handleSubmit = async () => {
       >
         Iniciar Sesión
       </button>
-      <p v-if="errorMessage" class="mt-4 text-center text-red-500">{{ errorMessage }}</p>
+      <p v-if="errorMessage" class="mt-4 text-center text-red-500">
+        {{ errorMessage }}
+      </p>
     </form>
     <p class="mt-4 text-center">
       ¿No tienes una cuenta?

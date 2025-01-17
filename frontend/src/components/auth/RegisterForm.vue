@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
+import axios from '../../axios'
 
 const firstName = ref('')
 const lastName = ref('')
@@ -49,7 +50,8 @@ const handleSubmit = async () => {
   } catch (error) {
     if (error instanceof AxiosError) {
       errorMessage.value =
-        error.response?.data?.message || 'Error al registrarse. Por favor, verifica tus datos.'
+        error.response?.data?.message ||
+        'Error al registrarse. Por favor, verifica tus datos.'
     } else {
       errorMessage.value = 'Error desconocido al registrarse.'
     }
@@ -143,7 +145,9 @@ const handleSubmit = async () => {
         />
       </div>
       <div class="mb-6 relative">
-        <label for="passwordConfirmation" class="sr-only">Confirmar Contraseña</label>
+        <label for="passwordConfirmation" class="sr-only"
+          >Confirmar Contraseña</label
+        >
         <font-awesome-icon
           :icon="['fas', 'lock']"
           class="absolute left-3 top-1/2 transform -translate-y-1/2"
@@ -163,7 +167,9 @@ const handleSubmit = async () => {
       >
         Registrarse
       </button>
-      <p v-if="errorMessage" class="mt-4 text-center text-red-500">{{ errorMessage }}</p>
+      <p v-if="errorMessage" class="mt-4 text-center text-red-500">
+        {{ errorMessage }}
+      </p>
     </form>
     <p class="mt-4 text-center">
       ¿Ya tienes una cuenta?
